@@ -6,7 +6,7 @@
 /*   By: svoort <svoort@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/05 09:38:22 by svoort        #+#    #+#                 */
-/*   Updated: 2020/08/24 13:42:39 by svoort        ########   odam.nl         */
+/*   Updated: 2020/08/31 14:15:12 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include "../libft/ft_printf.h"
 # include "../libft/libft.h"
 # include "../libft/get_next_line.h"
+# include <fcntl.h>
+# include <errno.h>
 
 typedef struct  s_flags {
     char        echo_stdin;

@@ -6,7 +6,7 @@
 /*   By: svoort <svoort@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/05 10:51:49 by svoort        #+#    #+#                 */
-/*   Updated: 2020/08/24 13:40:02 by svoort        ########   odam.nl         */
+/*   Updated: 2020/08/31 14:36:07 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,77 +148,97 @@ void			do_md5(char *std, t_ssl *g)
 	free(temp);
 }
 
-char	*read_fd(int fd)
+static int fd_is_valid(int fd)
 {
-    char    *text;
-    char    *buf;
-
-	text = NULL;
-	if (read(fd, &buf, 0))
-	{
-		while (get_next_line(fd, &buf))
-		{
-			text = ft_joinfree(text, buf, 1);
-			text = ft_joinfree(text, "\n", 1);
-		}
-	}
-    return (text);
+	return (fcntl(fd, F_GETFD) != -1 || errno != EBADF);
 }
 
-void    md5_flag_flow(int argc, char **argv, t_ssl *ssl)
+char	*read_fd(int fd)
 {
-    if (ft_strequ(argv[ssl->i], "-s") && argv[ssl->i + 1])
-    {
-        ssl->s = 1;
+	char	*text;
+	char	*buf;
+	int		ret;
+
+	text = NULL;
+	if (fd == 0)
+	{
+		if ((fseek(stdin, 0, SEEK_END), ftell(stdin)) > 0)
+		{
+			while (get_next_line(fd, &buf))
+			{
+				text = ft_joinfree(text, buf, 0);
+				text = ft_joinfree(text, "\n", 0);
+			}
+		}
+	}
+	else if (fd_is_valid(fd))
+	{
+		text = "";
+		while (get_next_line(fd, &buf))
+		{
+			text = ft_joinfree(text, buf, 0);
+			text = ft_joinfree(text, "\n", 0);
+		}
+	}
+	return (text);
+}
+
+void	md5_flag_flow(int argc, char **argv, t_ssl *ssl)
+{
+	if (ft_strequ(argv[ssl->i], "-s") && argv[ssl->i + 1])
+	{
+		ssl->s = 1;
 		ft_printf("MD5 (\"%s\") = ", argv[ssl->i + 1]);
-        do_md5(argv[(ssl->i) + 1], ssl);
-        (ssl->i) += 2;
-    }
-    else if (ft_strequ(argv[ssl->i], "-r"))
-    {
-        ssl->r = 1;
-        (ssl->i)++;
-    }
-    else if (ft_strequ(argv[ssl->i], "-q"))
-    {
-        ssl->q = 1;
-        (ssl->i)++;
-    }
+		do_md5(argv[(ssl->i) + 1], ssl);
+		(ssl->i) += 2;
+	}
+	else if (ft_strequ(argv[ssl->i], "-r"))
+	{
+		ssl->r = 1;
+		(ssl->i)++;
+	}
+	else if (ft_strequ(argv[ssl->i], "-q"))
+	{
+		ssl->q = 1;
+		(ssl->i)++;
+	}
+	else if (ft_strequ(argv[ssl->i], "-p"))
+	{
+		ssl->p = 1;
+		(ssl->i)++;
+	}
+	else
+		(ssl->i)++;
 }
 
 void    md5_loop(int argc, char **argv)
 {
-    t_ssl   ssl;
-    int     fd;
-    char    *text;
+	t_ssl	ssl;
+	int		fd;
+	char	*text;
 
-    ssl.i = 2;
-	while (argv[ssl.i] && ft_strcmp(argv[ssl.i], "-p"))
-	{
-        ssl.p = 1;
-		ssl.i++;
-	}
+	ft_bzero(&ssl, sizeof(t_ssl));
 	ssl.i = 2;
-    while (argv[ssl.i] && argv[ssl.i][0] == '-')
-        md5_flag_flow(argc, argv, &ssl);
+	while (argv[ssl.i] && argv[ssl.i][0] == '-')
+		md5_flag_flow(argc, argv, &ssl);
 	ssl.stdin = read_fd(0);
-	if (ssl.stdin)
+	if (ssl.stdin != NULL)
 	{
 		if (ssl.p)
-			ft_printf("%s\n", ssl.stdin);
+			ft_printf("%s", ssl.stdin);
 		do_md5(ssl.stdin, &ssl);
 	}
-    while (ssl.i < argc)
-    {
-        fd = open(argv[ssl.i], O_RDONLY);
-        if (fd != -1)
-        {
-            text = read_fd(fd);
+	while (ssl.i < argc)
+	{
+		fd = open(argv[ssl.i], O_RDONLY);
+		if (fd != -1)
+		{
+			text = read_fd(fd);
 			ft_printf("MD5 (\"%s\") = ", argv[ssl.i]);
-            do_md5(text, &ssl);
-        }
-        else
-            ft_printf("%s: %s: No such file or directory\n", argv[1], argv[ssl.i]);
-        ssl.i++;
-    }
+			do_md5(text, &ssl);
+		}
+		else
+			ft_printf("%s: %s: No such file or directory\n", argv[1], argv[ssl.i]);
+		ssl.i++;
+	}
 }
