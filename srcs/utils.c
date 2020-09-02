@@ -6,7 +6,7 @@
 /*   By: svoort <svoort@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/08 09:52:57 by svoort        #+#    #+#                 */
-/*   Updated: 2020/08/09 15:36:29 by svoort        ########   odam.nl         */
+/*   Updated: 2020/09/02 12:25:52 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,4 +126,28 @@ void ft_printssl(t_ssl *ssl)
 	ft_printf("n_file: %i\n", ssl->n_file);
 	ft_printf("pars: %i\n", ssl->pars);
 	ft_printf("fd: %i\n", ssl->fd);
+}
+
+static int fd_is_valid(int fd)
+{
+	return (fcntl(fd, F_GETFD) != -1 || errno != EBADF);
+}
+
+char	*read_fd(int fd)
+{
+	char	*text;
+	char	*buf;
+	int		ret;
+
+	text = NULL;
+	if (fd_is_valid(fd))
+	{
+		text = "";
+		while (get_next_line(fd, &buf))
+		{
+			text = ft_joinfree(text, buf, 0);
+			text = ft_joinfree(text, "\n", 0);
+		}
+	}
+	return (text);
 }

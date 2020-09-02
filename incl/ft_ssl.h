@@ -6,7 +6,7 @@
 /*   By: svoort <svoort@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/05 09:38:22 by svoort        #+#    #+#                 */
-/*   Updated: 2020/08/31 14:15:12 by svoort        ########   odam.nl         */
+/*   Updated: 2020/09/02 12:37:51 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ typedef struct		s_ssl
 	int				str;
 	char			*stdin;
 	int				n_file;
+	int				file_given;
 	int				pars;
 	int				fd;
 }					t_ssl;
@@ -77,7 +78,6 @@ void            parse_flags(t_flags *flags, int argc, char **argv);
 **  md5.c
 */
 
-char			*read_fd(int fd);
 void            md5_loop(int argc, char **argv);
 int				md5(unsigned char *init_mg, int len, t_ssl *ssl);
 static void		figure_out_hash(t_ssl *ssl, int i);
@@ -91,6 +91,7 @@ char			*add00(char *str);
 char			*ft_itoa_base_extra(uint32_t n, int base);
 uint32_t		reverse_uint32(uint32_t n);
 void 			ft_printssl(t_ssl *ssl);
+char			*read_fd(int fd);
 
 /*
 **	sha256.c
