@@ -6,7 +6,7 @@
 /*   By: svoort <svoort@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/08 09:52:57 by svoort        #+#    #+#                 */
-/*   Updated: 2020/09/02 12:25:52 by svoort        ########   odam.nl         */
+/*   Updated: 2020/09/03 09:17:00 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,52 +88,12 @@ uint32_t	reverse_uint32(uint32_t n)
 		((n & 0xff00) << 8) | (n << 24));
 }
 
-void ft_printssl(t_ssl *ssl)
-{
-	ft_printf("len: %i\n", ssl->len);
-	ft_printf("h0: %i\n", ssl->h0);
-	ft_printf("h1: %i\n", ssl->h1);
-	ft_printf("h2: %i\n", ssl->h2);
-	ft_printf("h3: %i\n", ssl->h3);
-	ft_printf("h4: %i\n", ssl->h4);
-	ft_printf("h5: %i\n", ssl->h5);
-	ft_printf("h6: %i\n", ssl->h6);
-	ft_printf("h7: %i\n", ssl->h7);
-	ft_printf("a: %i\n", ssl->a);
-	ft_printf("b: %i\n", ssl->b);
-	ft_printf("c: %i\n", ssl->c);
-	ft_printf("d: %i\n", ssl->d);
-	ft_printf("e: %i\n", ssl->e);
-	ft_printf("f: %i\n", ssl->f);
-	ft_printf("g: %i\n", ssl->g);
-	ft_printf("h: %i\n", ssl->h);
-	ft_printf("p: %i\n", ssl->p);
-	ft_printf("q: %i\n", ssl->q);
-	ft_printf("r: %i\n", ssl->r);
-	ft_printf("s: %i\n", ssl->s);
-	ft_printf("s0: %i\n", ssl->s0);
-	ft_printf("s1: %i\n", ssl->s1);
-	ft_printf("s2: %i\n", ssl->s2);
-	ft_printf("s3: %i\n", ssl->s3);
-	ft_printf("s4: %i\n", ssl->s4);
-	ft_printf("s5: %i\n", ssl->s5);
-	ft_printf("bytes: %s\n", ssl->bytes);
-	ft_printf("bytes_32: %s\n", ssl->bytes_32);
-	ft_printf("i: %i\n", ssl->i);
-	ft_printf("tmp: %i\n", ssl->tmp);
-	ft_printf("str: %i\n", ssl->str);
-	ft_printf("stdin: %s\n", ssl->stdin);
-	ft_printf("n_file: %i\n", ssl->n_file);
-	ft_printf("pars: %i\n", ssl->pars);
-	ft_printf("fd: %i\n", ssl->fd);
-}
-
-static int fd_is_valid(int fd)
+static int	fd_is_valid(int fd)
 {
 	return (fcntl(fd, F_GETFD) != -1 || errno != EBADF);
 }
 
-char	*read_fd(int fd)
+char		*read_fd(int fd)
 {
 	char	*text;
 	char	*buf;

@@ -1,6 +1,7 @@
 FLAGS = -g # -Wall -Wextra -Werror
 MKEX = gcc $(FLAGS) -o
-_SRC = main.c parse_flags.c md5.c utils.c sha256.c
+_SRC = main.c parse_flags.c md5.c utils.c sha256.c md5_utils.c \
+	sha256_utils.c sha256_printing.c
 SRC = $(addprefix ./srcs/, $(_SRC))
 OBJECT = $(SRC:.c=.o)
 COMP = gcc -c
@@ -10,7 +11,7 @@ INCLUDES = incl
 
 # Colors
 RED				= \033[31;1m
-GREEN		    = \033[32;1m
+GREEN			= \033[32;1m
 YELLOW			= \033[33;1m
 BLUE			= \033[34;1m
 PURPLE			= \033[35;1m
