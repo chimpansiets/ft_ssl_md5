@@ -6,7 +6,7 @@
 /*   By: svoort <svoort@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/23 09:22:59 by svoort        #+#    #+#                 */
-/*   Updated: 2020/09/03 09:52:40 by svoort        ########   odam.nl         */
+/*   Updated: 2020/09/03 09:57:48 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 int					sha256(char *init_mg, int len, t_ssl *ssl)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	init_h_sha(ssl);
 	padding_sha256(init_mg, len, ssl);

@@ -6,7 +6,7 @@
 /*   By: svoort <svoort@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/05 09:38:22 by svoort        #+#    #+#                 */
-/*   Updated: 2020/09/03 09:55:21 by svoort        ########   odam.nl         */
+/*   Updated: 2020/09/03 09:59:10 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,14 @@ int				md5(unsigned char *init_mg, int len, t_ssl *ssl);
 
 char			*add00(char *str);
 char			*ft_itoa_base_extra(uint32_t n, int base);
-uint32_t		reverse_uint32(uint32_t n);
 void 			ft_printssl(t_ssl *ssl);
+char			*read_fd(int fd);
+
+/*
+**	utils2.c
+*/
+
+uint32_t		reverse_uint32(uint32_t n);
 char			*read_fd(int fd);
 
 /*

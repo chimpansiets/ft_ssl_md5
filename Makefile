@@ -1,7 +1,7 @@
 FLAGS = -g # -Wall -Wextra -Werror
 MKEX = gcc $(FLAGS) -o
 _SRC = main.c parse_flags.c md5.c utils.c sha256.c md5_utils.c \
-	sha256_utils.c sha256_printing.c
+	sha256_utils.c sha256_printing.c utils2.c
 SRC = $(addprefix ./srcs/, $(_SRC))
 OBJECT = $(SRC:.c=.o)
 COMP = gcc -c
