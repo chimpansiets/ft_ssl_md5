@@ -6,7 +6,7 @@
 /*   By: svoort <svoort@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/09/03 09:42:51 by svoort        #+#    #+#                 */
-/*   Updated: 2020/09/05 13:57:28 by svoort        ########   odam.nl         */
+/*   Updated: 2020/09/05 14:04:30 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ void	figure_out_hash_sha(t_ssl *ssl, int i)
 	j = 16;
 	while (j < 64)
 	{
-		ft_printf("%i\n", rrot(ssl->t[j - 15], 7));
 		ssl->s0 = rrot(ssl->t[j - 15], 7) ^
 			rrot(ssl->t[j - 15], 18) ^ (ssl->t[j - 15] >> 3);
 		ssl->s1 = rrot(ssl->t[j - 2], 17) ^

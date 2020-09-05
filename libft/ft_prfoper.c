@@ -6,7 +6,7 @@
 /*   By: svoort <svoort@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/02/25 16:50:45 by svoort        #+#    #+#                 */
-/*   Updated: 2019/04/24 12:07:10 by svoort        ########   odam.nl         */
+/*   Updated: 2020/09/05 14:11:01 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ static	void	prfstr(char s, va_list *ar, int *i, char *un)
 
 static	void	opersec(char *s, va_list *ar, int *i, char *st)
 {
-	if (OPER(s[*i]) && OPE2(s[*i]) && OPE3(s[*i]))
+	if (oper(s[*i]) && ope2(s[*i]) && ope3(s[*i]))
 		strendf(s[*i], i);
 	else if (s[*i] == 'Z')
 		ft_qstr(ft_rotnb(va_arg(*ar, char *), 42), i);
@@ -94,7 +94,7 @@ static	void	opersec(char *s, va_list *ar, int *i, char *st)
 		ft_dblhex(va_arg(*ar, long double), i, s[*i]);
 	else if (s[*i] == 'a' || s[*i] == 'A')
 		ft_dblhex(va_arg(*ar, double), i, s[*i]);
-	else if (DEVAL(s[*i]) || DEVA2(s[*i]))
+	else if (deval(s[*i]) || deva2(s[*i]))
 		ft_prfnbr(s[*i], i, ar, st);
 	else if (s[*i] == 'p')
 	{

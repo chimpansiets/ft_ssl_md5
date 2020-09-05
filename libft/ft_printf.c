@@ -6,7 +6,7 @@
 /*   By: svoort <svoort@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/02/22 19:26:32 by svoort        #+#    #+#                 */
-/*   Updated: 2019/04/24 12:05:25 by svoort        ########   odam.nl         */
+/*   Updated: 2020/09/05 14:11:01 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int				flbax(char *s, va_list *ar2, int *i)
 		if (*s == '%' && (*s))
 		{
 			s++;
-			while (OPER(*s) && OPE2(*s) && OPE3(*s) && *s)
+			while (oper(*s) && ope2(*s) && ope3(*s) && *s)
 			{
 				if (*s > 47 && *s < 58 && *(s + 1) == '$')
 				{
@@ -64,7 +64,7 @@ static	void	flg_sec(char *s, int *i, va_list *ar2)
 
 static	void	flg_fir(char *s, va_list *ar, int *i, va_list *ar2)
 {
-	while (FLSIZ(s[*i]) || FL2(s[*i]))
+	while (flsiz(s[*i]) || fl2(s[*i]))
 	{
 		if (s[*i] == ' ' && !i[2])
 			i[2] = 1;

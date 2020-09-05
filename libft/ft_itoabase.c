@@ -6,15 +6,11 @@
 /*   By: svoort <svoort@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/02/25 13:14:41 by svoort        #+#    #+#                 */
-/*   Updated: 2020/08/06 10:14:15 by svoort        ########   odam.nl         */
+/*   Updated: 2020/09/05 14:24:57 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-#define INVS(j) j < 48 || j > 122 || (j > 57 && j < 65) || (j > 90 && j < 97)
-#define INV1(j) (j > 64 && j < 91 && (j > base + 55 || base < 11))
-#define INV2(j) (j > 96 && j < 123 && (base < 11 || j > base + 87))
 
 static	int		validbase(char *s, int base, int l, int j)
 {
@@ -29,7 +25,7 @@ static	int		validbase(char *s, int base, int l, int j)
 			j = (int)*s;
 		else if (*s > 96 && *s < 123)
 			l = (int)*s;
-		if (INV1(*s) || INV2(*s) || (*s > 47 && *s < 58 && *s > base + 48))
+		if (inv1(*s, base) || inv2(*s, base) || inv3(*s, base))
 		{
 			ft_printf("error: \'%c\' too large or small for %d base", *s, base);
 			return (0);
@@ -112,7 +108,7 @@ uintmax_t		ft_basetoint(char *s, int base)
 		j--;
 		check_char(&s, &l, j, i);
 		i *= base;
-		if (INVS(s[j]))
+		if (invs(s[j]))
 		{
 			ft_printf("error: \'%c\' doesn't belong to any base", s[j]);
 			return (0);

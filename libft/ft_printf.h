@@ -6,7 +6,7 @@
 /*   By: svoort <svoort@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/02/22 18:15:55 by svoort        #+#    #+#                 */
-/*   Updated: 2019/04/27 17:05:08 by svoort        ########   odam.nl         */
+/*   Updated: 2020/09/05 14:29:44 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,27 +21,6 @@
 # include <wctype.h>
 # include <stdint.h>
 # include <locale.h>
-
-# define FLSIZ(x) x == 'j' || x == 'z' || x == '#' || x == 'l' || x == 'h'
-# define FL2(x) x == ' ' || (x != 44 && x != 47 && x > 41 && x < 58) || x == 'L'
-# define DEVAL(x) x == 'D' || x == 'd' || x == 'x' || x == 'O' || x == 'b'
-# define DEVA2(x) x == 'i' || x == 'o' || x == 'X' || x == 'u' || x == 'U'
-# define OPER(x) (x < 96 || x > 103) && x != 105 && x != 120 && x != 114
-# define OPE2(x) x != 115 && (x < 110 || x > 112) && x != 117  && x != 83
-# define OPE3(x) (x < 65 || x > 71) && x != 85 && x != 88 && x != 79
-
-# define RED			\e[0;31m
-# define BOLDRED		\e[1;31m
-# define GREEN			\e[0;32m
-# define BOLDGREEN		\e[1;32m
-# define YELLOW			\e[0;33m
-# define BOLDYELLOW		\e[1;33m
-# define BLUE			\e[0;34m
-# define BOLDBLUE		\e[1;34m
-# define MAGENTA		\e[0;35m
-# define BOLDMAGENTA	\e[1;35m
-# define CYAN			\e[0;36m
-# define BOLDCYAN		\e[1;36m
 
 int					ft_atoi(const char *str);
 int					ft_nbrlen(intmax_t c, int a);
@@ -67,6 +46,17 @@ char				*ft_rotnb(char *s, int i);
 void				prfsec(char c, int *i, va_list *ar, char *ito);
 int					flbax(char *s, va_list *ar2, int *i);
 int					justfree(char **ito, int a, char c);
+int					flsiz(char x);
+int					fl2(char x);
+int					deval(char x);
+int					deva2(char x);
+int					oper(char x);
+int					ope2(char x);
+int					ope3(char x);
+int					invs(char j);
+int					inv1(char j, int base);
+int					inv2(char j, int base);
+int					inv3(char j, int base);
 
 /*
 **	helper1.c
