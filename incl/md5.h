@@ -6,7 +6,7 @@
 /*   By: svoort <svoort@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/09/03 09:29:05 by svoort        #+#    #+#                 */
-/*   Updated: 2020/09/05 13:56:19 by svoort        ########   odam.nl         */
+/*   Updated: 2020/09/05 14:31:32 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,6 @@
 # define MD5_H
 
 # include <stdint.h>
-// # define f1(x, y, z) ((x & y) | (~x & z))
-// # define f2(x, y, z) ((x & z) | (y & ~z))
-// # define f3(x, y, z) (x ^ y ^ z)
-// # define f4(x, y, z) (y ^ (x | ~z))
-
-// # define lrot(X, N) ((X << N) | (X >> (32 - N)))
 
 static const uint32_t g_s[] = {
 	7, 12, 17, 22, 7, 12, 17, 22, 7, 12, 17, 22, 7, 12, 17,

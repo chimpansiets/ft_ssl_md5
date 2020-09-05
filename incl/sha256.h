@@ -6,7 +6,7 @@
 /*   By: svoort <svoort@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/09/03 09:43:36 by svoort        #+#    #+#                 */
-/*   Updated: 2020/09/05 13:57:28 by svoort        ########   odam.nl         */
+/*   Updated: 2020/09/05 14:31:19 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ static const uint32_t g_t[] = {
 **	rotations.c
 */
 
-long long	rrot(long X, long N);
-long long	s1(long X);
+long long	rrot(long x, long n);
+long long	s1(long x);
 long long	ch(long x, long y, long z);
 long long	s0(long x);
 long long	maj(long x, long y, long z);
