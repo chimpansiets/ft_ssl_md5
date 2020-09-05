@@ -6,7 +6,7 @@
 /*   By: svoort <svoort@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/09/03 09:42:51 by svoort        #+#    #+#                 */
-/*   Updated: 2020/09/03 09:46:55 by svoort        ########   odam.nl         */
+/*   Updated: 2020/09/05 13:57:28 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,11 @@ void	figure_out_hash_sha(t_ssl *ssl, int i)
 	j = 16;
 	while (j < 64)
 	{
-		ssl->s0 = RROT(ssl->t[j - 15], 7) ^
-			RROT(ssl->t[j - 15], 18) ^ (ssl->t[j - 15] >> 3);
-		ssl->s1 = RROT(ssl->t[j - 2], 17) ^
-			RROT(ssl->t[j - 2], 19) ^ (ssl->t[j - 2] >> 10);
+		ft_printf("%i\n", rrot(ssl->t[j - 15], 7));
+		ssl->s0 = rrot(ssl->t[j - 15], 7) ^
+			rrot(ssl->t[j - 15], 18) ^ (ssl->t[j - 15] >> 3);
+		ssl->s1 = rrot(ssl->t[j - 2], 17) ^
+			rrot(ssl->t[j - 2], 19) ^ (ssl->t[j - 2] >> 10);
 		ssl->t[j] = ssl->t[j - 16] + ssl->s0 + ssl->t[j - 7] + ssl->s1;
 		j++;
 	}
@@ -75,11 +76,11 @@ void	figure_out_hash_sha(t_ssl *ssl, int i)
 
 void	swap_words(t_ssl *ssl, int j)
 {
-	ssl->s1 = S1(ssl->e);
-	ssl->s2 = CH(ssl->e, ssl->f, ssl->g);
+	ssl->s1 = s1(ssl->e);
+	ssl->s2 = ch(ssl->e, ssl->f, ssl->g);
 	ssl->s3 = ssl->h + ssl->s1 + ssl->s2 + g_t[j] + ssl->t[j];
-	ssl->s0 = S0(ssl->a);
-	ssl->s4 = MAJ(ssl->a, ssl->b, ssl->c);
+	ssl->s0 = s0(ssl->a);
+	ssl->s4 = maj(ssl->a, ssl->b, ssl->c);
 	ssl->s5 = ssl->s0 + ssl->s4;
 	ssl->h = ssl->g;
 	ssl->g = ssl->f;

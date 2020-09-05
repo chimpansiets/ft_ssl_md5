@@ -6,7 +6,7 @@
 /*   By: svoort <svoort@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/09/03 09:19:18 by svoort        #+#    #+#                 */
-/*   Updated: 2020/09/03 09:48:28 by svoort        ########   odam.nl         */
+/*   Updated: 2020/09/05 13:56:19 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,28 +33,28 @@ void		figure_out_hash_md5(t_ssl *ssl, int i)
 {
 	if (i < 16)
 	{
-		ssl->f = F1(ssl->b, ssl->c, ssl->d);
+		ssl->f = f1(ssl->b, ssl->c, ssl->d);
 		ssl->g = i;
 	}
 	else if (i < 32)
 	{
-		ssl->f = F2(ssl->b, ssl->c, ssl->d);
+		ssl->f = f2(ssl->b, ssl->c, ssl->d);
 		ssl->g = (5 * i + 1) % 16;
 	}
 	else if (i < 48)
 	{
-		ssl->f = F3(ssl->b, ssl->c, ssl->d);
+		ssl->f = f3(ssl->b, ssl->c, ssl->d);
 		ssl->g = (3 * i + 5) % 16;
 	}
 	else
 	{
-		ssl->f = F4(ssl->b, ssl->c, ssl->d);
+		ssl->f = f4(ssl->b, ssl->c, ssl->d);
 		ssl->g = (7 * i) % 16;
 	}
 	ssl->tmp = ssl->d;
 	ssl->d = ssl->c;
 	ssl->c = ssl->b;
-	ssl->b = ssl->b + LROT((ssl->a + ssl->f + g_t[i] + ssl->t[ssl->g]), g_s[i]);
+	ssl->b = ssl->b + lrot((ssl->a + ssl->f + g_t[i] + ssl->t[ssl->g]), g_s[i]);
 	ssl->a = ssl->tmp;
 }
 

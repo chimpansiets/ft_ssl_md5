@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   helper2.c                                          :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: svoort <svoort@student.codam.nl>             +#+                     */
+/*   By: svoort <svoort@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/03/10 14:42:59 by svoort         #+#    #+#                */
-/*   Updated: 2019/04/24 12:07:50 by svoort        ########   odam.nl         */
+/*   Created: 2019/03/10 14:42:59 by svoort        #+#    #+#                 */
+/*   Updated: 2020/09/05 13:03:35 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

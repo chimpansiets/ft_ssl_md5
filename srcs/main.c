@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   main.c                                             :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: svoort <svoort@student.codam.nl>             +#+                     */
+/*   By: svoort <svoort@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/05 09:33:42 by svoort        #+#    #+#                 */
-/*   Updated: 2020/09/03 09:13:12 by svoort        ########   odam.nl         */
+/*   Updated: 2020/09/05 12:49:54 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

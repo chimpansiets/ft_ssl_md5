@@ -3,24 +3,17 @@
 /*                                                        ::::::::            */
 /*   sha256.h                                           :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: svoort <svoort@student.codam.nl>             +#+                     */
+/*   By: svoort <svoort@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/09/03 09:43:36 by svoort        #+#    #+#                 */
-/*   Updated: 2020/09/03 09:44:27 by svoort        ########   odam.nl         */
+/*   Updated: 2020/09/05 13:57:28 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SHA256_H
-# define SHA256_h
+# define SHA256_H
 
 # include <stdint.h>
-
-# define RROT(X, N) ((X >> N) | (X << (32 - N)))
-
-# define S1(X) ((RROT(X, 6)) ^ (RROT(X, 11)) ^ (RROT(X, 25)))
-# define CH(x, y, z) ((x & y) ^ (~ x & z))
-# define S0(X) ((RROT(X, 2)) ^ (RROT(X, 13)) ^ (RROT(X, 22)))
-# define MAJ(x, y, z) ((x & y) ^ (x & z) ^ (y & z))
 
 static const uint32_t g_t[] = {
 	0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5,
@@ -40,5 +33,15 @@ static const uint32_t g_t[] = {
 	0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208,
 	0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2
 };
+
+/*
+**	rotations.c
+*/
+
+long long	rrot(long X, long N);
+long long	s1(long X);
+long long	ch(long x, long y, long z);
+long long	s0(long x);
+long long	maj(long x, long y, long z);
 
 #endif

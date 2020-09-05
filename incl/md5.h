@@ -6,7 +6,7 @@
 /*   By: svoort <svoort@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/09/03 09:29:05 by svoort        #+#    #+#                 */
-/*   Updated: 2020/09/03 09:30:31 by svoort        ########   odam.nl         */
+/*   Updated: 2020/09/05 13:56:19 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 # define MD5_H
 
 # include <stdint.h>
-# define F1(x, y, z) ((x & y) | (~x & z))
-# define F2(x, y, z) ((x & z) | (y & ~z))
-# define F3(x, y, z) (x ^ y ^ z)
-# define F4(x, y, z) (y ^ (x | ~z))
+// # define f1(x, y, z) ((x & y) | (~x & z))
+// # define f2(x, y, z) ((x & z) | (y & ~z))
+// # define f3(x, y, z) (x ^ y ^ z)
+// # define f4(x, y, z) (y ^ (x | ~z))
 
-# define LROT(X, N) ((X << N) | (X >> (32 - N)))
+// # define lrot(X, N) ((X << N) | (X >> (32 - N)))
 
 static const uint32_t g_s[] = {
 	7, 12, 17, 22, 7, 12, 17, 22, 7, 12, 17, 22, 7, 12, 17,
@@ -45,5 +45,11 @@ static const uint32_t g_t[] = {
 	0x655b59c3, 0x8f0ccc92, 0xffeff47d, 0x85845dd1,
 	0x6fa87e4f, 0xfe2ce6e0, 0xa3014314, 0x4e0811a1,
 	0xf7537e82, 0xbd3af235, 0x2ad7d2bb, 0xeb86d391};
+
+long long	f1(long x, long y, long z);
+long long	f2(long x, long y, long z);
+long long	f3(long x, long y, long z);
+long long	f4(long x, long y, long z);
+long long	lrot(long x, long n);
 
 #endif

@@ -1,21 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_isascii.c                                       :+:    :+:            */
+/*   rotations_sha256.c                                 :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: svoort <svoort@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/09 16:17:57 by svoort        #+#    #+#                 */
-/*   Updated: 2019/01/18 10:24:44 by svoort        ########   odam.nl         */
+/*   Created: 2020/09/05 13:13:45 by svoort        #+#    #+#                 */
+/*   Updated: 2020/09/05 13:58:22 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_ssl.h"
 
-int	ft_isascii(int c)
+long long	rrot(long x, long n)
 {
-	if (c >= 0 && c <= 127)
-		return (1);
-	else
-		return (0);
+	return ((x >> n) | (x << (32 - n)));
+}
+
+long long	s1(long x)
+{
+	return (((rrot(x, 6)) ^ (rrot(x, 11)) ^ (rrot(x, 25))));
+}
+
+long long	ch(long x, long y, long z)
+{
+	return ((x & y) ^ (~x & z));
+}
+
+long long	s0(long x)
+{
+	return ((rrot(x, 2)) ^ (rrot(x, 13)) ^ (rrot(x, 22)));
+}
+
+long long	maj(long x, long y, long z)
+{
+	return ((x & y) ^ (x & z) ^ (y & z));
 }

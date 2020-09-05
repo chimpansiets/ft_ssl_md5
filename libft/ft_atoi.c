@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   ft_atoi.c                                          :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: svoort <svoort@student.codam.nl>             +#+                     */
+/*   By: svoort <svoort@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/02/23 12:19:04 by svoort        #+#    #+#                 */
-/*   Updated: 2020/09/03 09:06:01 by svoort        ########   odam.nl         */
+/*   Updated: 2020/09/05 12:53:49 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

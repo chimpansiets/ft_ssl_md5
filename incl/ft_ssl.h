@@ -6,7 +6,7 @@
 /*   By: svoort <svoort@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/05 09:38:22 by svoort        #+#    #+#                 */
-/*   Updated: 2020/09/03 09:59:10 by svoort        ########   odam.nl         */
+/*   Updated: 2020/09/05 13:11:46 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@
 # include <errno.h>
 # include <stdio.h>
 
-typedef struct	s_flags {
-	char		echo_stdin;
-	char		quiet;
-	char		reverse;
-}				t_flags;
+typedef struct		s_flags {
+	char			echo_stdin;
+	char			quiet;
+	char			reverse;
+}					t_flags;
 
 typedef struct		s_ssl
 {
@@ -72,64 +72,64 @@ typedef struct		s_ssl
 **  parse_flags.c
 */
 
-void			init_flags(t_flags *flags);
-void			parse_flags(t_flags *flags, int argc, char **argv);
+void				init_flags(t_flags *flags);
+void				parse_flags(t_flags *flags, int argc, char **argv);
 
 /*
 ** md5_utils.c
 */
 
-int				padding_md5(unsigned char *init_mg, int len, t_ssl *ssl);
-void			figure_out_hash_md5(t_ssl *ssl, int i);
-void			print_strings_md5(t_ssl *ssl, char **argv);
-void			print_files_md5(t_ssl *ssl, int argc, char **argv);
+int					padding_md5(unsigned char *init_mg, int len, t_ssl *ssl);
+void				figure_out_hash_md5(t_ssl *ssl, int i);
+void				print_strings_md5(t_ssl *ssl, char **argv);
+void				print_files_md5(t_ssl *ssl, int argc, char **argv);
 
 /*
 **  md5.c
 */
 
-void			init_h_md5(t_ssl *ssl);
-void			do_md5(char *std, t_ssl *g);
-void			md5_loop(int argc, char **argv);
-int				md5(unsigned char *init_mg, int len, t_ssl *ssl);
+void				init_h_md5(t_ssl *ssl);
+void				do_md5(char *std, t_ssl *g);
+void				md5_loop(int argc, char **argv);
+int					md5(unsigned char *init_mg, int len, t_ssl *ssl);
 
 /*
 **	utils.c
 */
 
-char			*add00(char *str);
-char			*ft_itoa_base_extra(uint32_t n, int base);
-void 			ft_printssl(t_ssl *ssl);
-char			*read_fd(int fd);
+char				*add00(char *str);
+char				*ft_itoa_base_extra(uint32_t n, int base);
+void				ft_printssl(t_ssl *ssl);
+char				*read_fd(int fd);
 
 /*
 **	utils2.c
 */
 
-uint32_t		reverse_uint32(uint32_t n);
-char			*read_fd(int fd);
+uint32_t			reverse_uint32(uint32_t n);
+char				*read_fd(int fd);
 
 /*
 **	sha256.c
 */
 
-void			do_sha256(char *std, t_ssl *g);
-void			sha256_loop(int argc, char **argv);
+void				do_sha256(char *std, t_ssl *g);
+void				sha256_loop(int argc, char **argv);
 
 /*
 ** sha256_utils.c
 */
 
-int				padding_sha256(char *init_mg, int len, t_ssl *ssl);
-void			init_h_sha(t_ssl *ssl);
-void			figure_out_hash_sha(t_ssl *ssl, int i);
-void			swap_words(t_ssl *ssl, int j);
+int					padding_sha256(char *init_mg, int len, t_ssl *ssl);
+void				init_h_sha(t_ssl *ssl);
+void				figure_out_hash_sha(t_ssl *ssl, int i);
+void				swap_words(t_ssl *ssl, int j);
 
 /*
 ** sha256_printing.c
 */
 
-void			print_strings_sha256(t_ssl *ssl, char **argv);
-void			print_files_sha256(t_ssl *ssl, int argc, char **av);
+void				print_strings_sha256(t_ssl *ssl, char **argv);
+void				print_files_sha256(t_ssl *ssl, int argc, char **av);
 
 #endif

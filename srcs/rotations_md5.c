@@ -1,34 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_strncat.c                                       :+:    :+:            */
+/*   rotations_md5.c                                    :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: svoort <svoort@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/10 10:49:33 by svoort        #+#    #+#                 */
-/*   Updated: 2019/01/18 13:58:58 by svoort        ########   odam.nl         */
+/*   Created: 2020/09/05 13:51:19 by svoort        #+#    #+#                 */
+/*   Updated: 2020/09/05 13:56:19 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_ssl.h"
 
-char	*ft_strncat(char *dest, const char *src, size_t n)
+long long	f1(long x, long y, long z)
 {
-	size_t	i;
-	int		i2;
-	size_t	destlen;
-	size_t	maxlen;
+	return ((x & y) | (~x & z));
+}
 
-	i = ft_strlen(dest);
-	i2 = 0;
-	destlen = i;
-	maxlen = ft_strlen(src) + ft_strlen(dest);
-	while (i < maxlen && i < (destlen + n))
-	{
-		dest[i] = src[i2];
-		i++;
-		i2++;
-	}
-	dest[i] = '\0';
-	return (dest);
+long long	f2(long x, long y, long z)
+{
+	return ((x & z) | (y & ~z));
+}
+
+long long	f3(long x, long y, long z)
+{
+	return (x ^ y ^ z);
+}
+
+long long	f4(long x, long y, long z)
+{
+	return (y ^ (x | ~z));
+}
+
+long long	lrot(long x, long n)
+{
+	return ((x << n) | (x >> (32 - n)));
 }
