@@ -2,7 +2,7 @@
 
 An introduction to cryptographic hashing algorithms
 
-This project consists of recoded versions of the message-digest algorithm MD5.
+This project consists of recoded versions of the message-digest algorithm MD5 and the sha256 algorithm.
 
 Built from the ground up using only these functions:
 
